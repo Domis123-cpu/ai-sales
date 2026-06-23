@@ -1,0 +1,28 @@
+services:
+  api:
+    build: .
+    container_name: projekt2-api
+    environment:
+      DATABASE_URL: postgresql+psycopg2://app:devpass@db:5432/appdb
+      LLM_API_KEY: dummy
+      LLM_BASE_URL: https://api.openai.com
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  db:
+    image: postgres:15
+    container_name: projekt2-db
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: appdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+

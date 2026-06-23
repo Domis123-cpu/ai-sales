@@ -1,0 +1,111 @@
+AI Sales Assistant — README (Production‑Ready)
+🚀 Opis projektu
+AI Sales Assistant to kompletny backend systemu sprzedażowego, który automatyzuje:
+
+przyjmowanie leadów,
+
+kwalifikację leadów (AI),
+
+prowadzenie rozmów z klientem,
+
+generowanie ofert handlowych,
+
+analizę rozmów i rekomendacje kolejnych kroków.
+
+System został zaprojektowany jako produkcyjny backend B2B, gotowy do integracji z CRM lub frontendem React.
+
+🧱 Architektura systemu (ASCII)
+Poniższy diagram przedstawia rzeczywistą architekturę projektu:
+
+Kod
+                         ┌──────────────────────────┐
+                         │        Frontend          │
+                         │ (CRM / React / Postman)  │
+                         └─────────────┬────────────┘
+                                       │ HTTP/JSON
+                                       ▼
+                         ┌──────────────────────────┐
+                         │         FastAPI          │
+                         │  app/main.py             │
+                         └─────────────┬────────────┘
+                                       │
+        ┌──────────────────────────────┼──────────────────────────────┐
+        │                              │                              │
+        ▼                              ▼                              ▼
+┌────────────────┐        ┌──────────────────────┐        ┌──────────────────────┐
+│  Leads Module   │        │ Conversations Module │        │   Offers Module      │
+│ /api/leads      │        │ /api/conversations   │        │ /api/offers          │
+└───────┬─────────┘        └──────────┬───────────┘        └──────────┬──────────┘
+        │                              │                               │
+        ▼                              ▼                               ▼
+┌────────────────┐        ┌──────────────────────┐        ┌──────────────────────┐
+│ Lead Model     │        │ Conversation Model    │        │ Offer + OfferItems   │
+│ SQLAlchemy ORM │        │ SQLAlchemy ORM        │        │ SQLAlchemy ORM        │
+└───────┬─────────┘        └──────────┬───────────┘        └──────────┬──────────┘
+        │                              │                               │
+        └──────────────┬───────────────┴───────────────┬──────────────┘
+                       ▼                                 ▼
+              ┌────────────────┐               ┌────────────────┐
+              │ PostgreSQL 15  │               │ Alembic Migrations │
+              │   (appdb)      │               │  versions/         │
+              └────────────────┘               └────────────────┘
+                       ▲
+                       │
+                       │ async HTTP
+                       ▼
+              ┌──────────────────────────┐
+              │       LLM Client         │
+              │ OpenAI / Mock / Local    │
+              └──────────────────────────┘
+✨ Kluczowe funkcje
+🔹 Lead Ingestion & Qualification
+zapis leadów do bazy,
+
+klasyfikacja AI (hot/warm/cold),
+
+podsumowanie intencji,
+
+rekomendacje kolejnych kroków.
+
+🔹 AI Conversation Assistant
+generowanie odpowiedzi,
+
+analiza kontekstu rozmowy,
+
+wsparcie handlowca.
+
+🔹 Offer Generator
+generowanie ofert handlowych,
+
+obliczenia cen, rabatów, wartości końcowych,
+
+generowanie markdown.
+
+🔹 Conversation Summaries
+podsumowanie rozmów,
+
+potrzeby, obiekcje, next steps.
+
+🗄️ Struktura bazy danych
+Migracje Alembica tworzą tabele:
+
+leads
+
+lead_qualification
+
+products
+
+offers
+
+offer_items
+
+conversations
+
+conversation_summaries
+
+🐳 Uruchamianie projektu (Docker)
+1. Uruchom:
+bash
+docker-compose up --build
+2. Dokumentacja API:
+👉 http://localhost:8000/docs
