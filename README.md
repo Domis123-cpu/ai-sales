@@ -168,6 +168,12 @@ Dokumentacja API:
 👉 http://localhost:8000/docs
 
 
+
+
+
+
+
+
 Dlaczego ten projekt jest wartościowy?
 ✔ Pokazuje realne umiejętności backendowe
 FastAPI (routing, DI, modularna architektura)
