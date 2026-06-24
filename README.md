@@ -13,7 +13,7 @@ podsumowania konwersacji
 
 klasyfikację leadów przez AI
 
-integrację z LLM (OpenAI / Mock / Local)
+integrację z LLM OpenAI
 
 To kompletny backend CRM gotowy do wdrożenia.
 
@@ -67,7 +67,7 @@ Backend	FastAPI, Uvicorn
 ORM	SQLAlchemy 2.0
 Baza danych	PostgreSQL 15
 Migracje	Alembic
-LLM	OpenAI GPT‑4o‑mini / Mock
+LLM	OpenAI GPT‑4o‑mini 
 Testy	pytest, httpx
 CI/CD	GitHub Actions
 Konteneryzacja	Docker + docker-compose
@@ -76,6 +76,7 @@ Język	Python 3.11
 
 🧱 Architektura systemu
 Kod
+```
                          ┌──────────────────────────┐
                          │        Frontend          │
                          │ (CRM / React / Postman)  │
@@ -112,8 +113,9 @@ Kod
                        ▼
               ┌──────────────────────────┐
               │       LLM Client         │
-              │ OpenAI / Mock / Local    │
+              │ OpenAI                   │
               └──────────────────────────┘
+```
 🗄️ Struktura bazy danych
 Migracje Alembica tworzą tabele:
 
@@ -164,3 +166,49 @@ docker-compose up --build
 Dokumentacja API:
 
 👉 http://localhost:8000/docs
+
+
+Dlaczego ten projekt jest wartościowy?
+✔ Pokazuje realne umiejętności backendowe
+FastAPI (routing, DI, modularna architektura)
+
+SQLAlchemy ORM + migracje Alembica
+
+PostgreSQL jako baza produkcyjna
+
+Docker + docker-compose
+
+GitHub Actions (CI)
+
+✔ Zawiera integrację z AI
+LLM Client (OpenAI / Mock)
+
+generowanie ofert
+
+klasyfikacja leadów
+
+analiza rozmów
+
+✔ Jest gotowy do wdrożenia
+pełna konteneryzacja
+
+migracje
+
+modularna architektura
+
+testy automatyczne
+
+pipeline CI
+
+✔ Pokazuje umiejętności enterprise
+czysta architektura
+
+modułowy kod
+
+testy
+
+CI/CD
+
+🧑‍💻 Autor
+Projekt przygotowany przez Dominika  
+Repozytorium: https://github.com/Domis123-cpu/ai-sales 
